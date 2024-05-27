@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Models | Introduction to Data Science with R and Tidyverse</title>
+  <meta name="description" content="Data Science in a Box contains the materials required to teach (or learn from) the course described above, all of which are freely-available and open-source." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Models | Introduction to Data Science with R and Tidyverse" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://datasciencebox.org/dsbox.png" />
+  <meta property="og:description" content="Data Science in a Box contains the materials required to teach (or learn from) the course described above, all of which are freely-available and open-source." />
+  <meta name="github-repo" content="https://github.com/coding-intro/R_Intro_2024_02" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Models | Introduction to Data Science with R and Tidyverse" />
+  
+  <meta name="twitter:description" content="Data Science in a Box contains the materials required to teach (or learn from) the course described above, all of which are freely-available and open-source." />
+  <meta name="twitter:image" content="https://datasciencebox.org/dsbox.png" />
+
+<meta name="author" content="Lukas Jürgensmeier, based on materials from Data Science in a Box by Mine Çetinkaya-Rundel" />
+
+
+<meta name="date" content="2024-02-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="importing-recoding-data.html"/>
+<link rel="next" href="things-you-can-do-after-this-course.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/dsbox.css" type="text/css" />
+<link rel="stylesheet" href="css/fontawesome/css/all.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to Data Science with R and Tidyverse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#course-objective"><i class="fa fa-check"></i><b>0.1</b> Course Objective</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i><b>0.2</b> Course Description</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#methods"><i class="fa fa-check"></i><b>0.3</b> Methods</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#conditions"><i class="fa fa-check"></i><b>0.4</b> Conditions</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#course-organization"><i class="fa fa-check"></i><b>0.5</b> Course Organization</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>0.6</b> Schedule</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#readings"><i class="fa fa-check"></i><b>0.7</b> Readings</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#trainers"><i class="fa fa-check"></i><b>0.8</b> Trainers</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Course content</b></span></li>
+<li class="chapter" data-level="1" data-path="hello-world.html"><a href="hello-world.html"><i class="fa fa-check"></i><b>1</b> Hello world</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="hello-world.html"><a href="hello-world.html#slides-application-exercises-and-references"><i class="fa fa-check"></i><b>1.1</b> Slides, application exercises, and references</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="visualizing-data.html"><a href="visualizing-data.html"><i class="fa fa-check"></i><b>2</b> Visualizing data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="visualizing-data.html"><a href="visualizing-data.html#slides-application-exercises-and-references-1"><i class="fa fa-check"></i><b>2.1</b> Slides, application exercises, and references</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="visualizing-data.html"><a href="visualizing-data.html#additional-material-not-covered-in-class"><i class="fa fa-check"></i><b>2.1.1</b> Additional material not covered in class</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="wrangling-tidying-data.html"><a href="wrangling-tidying-data.html"><i class="fa fa-check"></i><b>3</b> Wrangling and tidying data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="wrangling-tidying-data.html"><a href="wrangling-tidying-data.html#slides-application-exercises-and-references-2"><i class="fa fa-check"></i><b>3.1</b> Slides, application exercises, and references</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="wrangling-tidying-data.html"><a href="wrangling-tidying-data.html#additional-material-not-covered-in-class-1"><i class="fa fa-check"></i><b>3.1.1</b> Additional material not covered in class</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-recoding-data.html"><a href="importing-recoding-data.html"><i class="fa fa-check"></i><b>4</b> Importing and recoding data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="importing-recoding-data.html"><a href="importing-recoding-data.html#slides-application-exercises-and-references-3"><i class="fa fa-check"></i><b>4.1</b> Slides, application exercises, and references</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="importing-recoding-data.html"><a href="importing-recoding-data.html#additional-material-not-covered-in-class-2"><i class="fa fa-check"></i><b>4.1.1</b> Additional material not covered in class</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>5</b> Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="models.html"><a href="models.html#slides-application-exercises-and-references-4"><i class="fa fa-check"></i><b>5.1</b> Slides, application exercises, and references</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="models.html"><a href="models.html#additional-material-not-covered-in-class-3"><i class="fa fa-check"></i><b>5.1.1</b> Additional material not covered in class</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Next steps</b></span></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html"><i class="fa fa-check"></i>Things you can do after this course</a>
+<ul>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#continue-this-course"><i class="fa fa-check"></i>Continue this course</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#check-out-neuroscience-packages"><i class="fa fa-check"></i>Check out Neuroscience Packages</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#join-techacademy-e.v."><i class="fa fa-check"></i>Join TechAcademy e.V.</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#follow-the-r-community"><i class="fa fa-check"></i>Follow the R Community</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#install-r-and-rstudio-locally"><i class="fa fa-check"></i>Install R and RStudio locally</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#version-control-with-git"><i class="fa fa-check"></i>Version Control with Git</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#inspiration-and-tools-for-great-visualizations"><i class="fa fa-check"></i>Inspiration and Tools for Great Visualizations</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#see-what-else-is-possible-in-r"><i class="fa fa-check"></i>See what else is possible in R</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science with R and Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="models" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Models<a href="models.html#models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this part, we will introduce you to the tidyverse-way of modeling.
+We will not cover the mechanics of individual statistical models but scratch the surface of a very intuitive way of coding up your models in R.
+You might have come across the standard way of coding up a linear regression in R — the function <code>lm()</code>.
+Instead of using <code>lm()</code>, we introduce you to the <em>tidy</em> way of linear regressions in R through the <code>tidymodels</code> package.
+This approach builds on the tidy approach to data visualization and data wrangling.</p>
+<p>We will not go through all slides during the lecture — the main focus lies on the <em>tidy</em> way of modeling and not the actual statistics behind it.
+If you want to refresh your knowledge on linear regressions, feel free to read through the remaining slides we cannot cover in the course.</p>
+<div id="slides-application-exercises-and-references-4" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Slides, application exercises, and references<a href="models.html#slides-application-exercises-and-references-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="slide-deck">
+<p><strong>Unit 4 - Deck 2: Fitting and interpreting models</strong></p>
+<div class="slides">
+<p><a href="https://coding-intro.github.io/R_Intro_2024_02/slides/u4-d02-fitting-interpreting-models/u4-d02-fitting-interpreting-models.html#1">Slides</a></p>
+</div>
+<div class="reading">
+<p>IMS :: <a href="https://openintro-ims.netlify.app/intro-linear-models.html">Chp 3 - Introduction to linear models</a></p>
+</div>
+</div>
+<div id="additional-material-not-covered-in-class-3" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Additional material not covered in class<a href="models.html#additional-material-not-covered-in-class-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will not cover this unit due to time constraints.
+If you want to refresh your knowledge of regressions, feel free to study the slides on your own.</p>
+<div class="slide-deck">
+<p><strong>Unit 4 - Deck 1: The language of models</strong></p>
+<div class="slides">
+<p><a href="https://coding-intro.github.io/R_Intro_2024_02/slides/u4-d01-language-of-models/u4-d01-language-of-models.html#1">Slides</a></p>
+</div>
+</div>
+<div class="slide-deck">
+<p><strong>Unit 4 - Deck 3: Modelling nonlinear relationships</strong></p>
+<div class="slides">
+<p><a href="https://coding-intro.github.io/R_Intro_2024_02/slides/u4-d03-modeling-nonlinear-relationships/u4-d03-modeling-nonlinear-relationships.html#1">Slides</a></p>
+</div>
+</div>
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 4: Models with multiple predictors** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d04-model-multiple-predictors/u4-d04-model-multiple-predictors.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d04-model-multiple-predictors) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/mjkNabD4oi4) -->
+<!-- ::: -->
+<!-- ::: {.reading} -->
+<!-- IMS :: [Sec 4.1 - Regression with multiple predictors](https://openintro-ims.netlify.app/multi-logistic-models.html#regression-multiple-predictors) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 5: More models with multiple predictors** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d05-more-model-multiple-predictors/u4-d05-more-model-multiple-predictors.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d05-more-model-multiple-predictors) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/nJAYRnLPb10) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ### Classification and model building -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 6: Logistic regression** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d06-logistic-reg/u4-d06-logistic-reg.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d06-logistic-reg) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/AidXFYSYfJg) -->
+<!-- ::: -->
+<!-- ::: {.reading} -->
+<!-- IMS :: [Sec 4.5 - Logistic regression](https://openintro-ims.netlify.app/multi-logistic-models.html#logistic-regression) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 7: Prediction and overfitting** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d07-prediction-overfitting/u4-d07-prediction-overfitting.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d07-prediction-overfitting) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/Qd4lu_Lmwi0) -->
+<!-- ::: -->
+<!-- ::: {.reading} -->
+<!-- tidymodels :: [Build a model](https://www.tidymodels.org/start/models/) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 8: Feature engineering** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d08-feature-engineering/u4-d08-feature-engineering.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d08-feature-engineering) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/wZt9ab4jBZ4) -->
+<!-- ::: -->
+<!-- ::: {.reading} -->
+<!-- tidymodels :: [Preprocess your data with recipes](https://www.tidymodels.org/start/recipes/) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ### Model validation -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 9: Cross validation** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d09-cross-validation/u4-d09-cross-validation.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d09-cross-validation) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/L1KfIISmUT4) -->
+<!-- ::: -->
+<!-- ::: {.reading} -->
+<!-- tidymodels :: [Evaluate your model with resampling](https://www.tidymodels.org/start/resampling/) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.application-exercise} -->
+<!-- **The Office + Feature engineering, Pt. 1** -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/application-exercises/ae-09-feat-eng-cv/theoffice.Rmd) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/qsUYstdN4LQ) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.application-exercise} -->
+<!-- **The Office + Cross validation, Pt. 2** -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/application-exercises/ae-09-feat-eng-cv/theoffice.Rmd) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/WstIr94Fdjc) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ### Uncertainty quantification -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 10: Quantifying uncertainty** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d10-quantify-uncertainty/u4-d10-quantify-uncertainty.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d10-quantify-uncertainty) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/LYpKrtZmQtI) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 11: Bootstrapping** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d11-bootstrap/u4-d11-bootstrap.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d11-bootstrap) -->
+<!-- ::: -->
+<!-- ::: {.video} -->
+<!-- [Video](https://youtu.be/bdqpI3iVOso) -->
+<!-- ::: -->
+<!-- ::: {.reading} -->
+<!-- IMS :: [Sec 5.2 - Bootstrap confidence intervals](https://openintro-ims.netlify.app/intro-stat-inference.html#boot-ci) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 12: Hypothesis testing** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d12-hypothesis-testing/u4-d12-hypothesis-testing.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d12-hypothesis-testing) -->
+<!-- ::: -->
+<!-- ::: {.reading} -->
+<!-- [IMS :: Sec 5.1 - Randomization tests](https://openintro-ims.netlify.app/intro-stat-inference.html#inf-rand) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.slide-deck} -->
+<!-- **Unit 4 - Deck 13: Inference overview** -->
+<!-- ::: {.slides} -->
+<!-- [Slides](https://rstudio-education.github.io/datascience-box/course-materials/slides/u4-d13-inference-overview/u4-d13-inference-overview.html#1) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/slides/u4-d13-inference-overview) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ## Labs -->
+<!-- ::: {.lab} -->
+<!-- **Lab 10: Grading the professor, Pt. 1** -->
+<!-- Fitting and interpreting simple linear regression models -->
+<!-- ::: {.instructions} -->
+<!-- [Instructions](https://rstudio-education.github.io/datascience-box/course-materials/lab-instructions/lab-10/lab-10-slr-course-evals.html) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/lab-instructions/lab-10) -->
+<!-- ::: -->
+<!-- ::: {.starter} -->
+<!-- [Starter](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/starters/lab/lab-10-slr-course-evals) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.lab} -->
+<!-- **Lab 11: Grading the professor, Pt. 2** -->
+<!-- Fitting and interpreting multiple linear regression models -->
+<!-- ::: {.instructions} -->
+<!-- [Instructions](https://rstudio-education.github.io/datascience-box/course-materials/lab-instructions/lab-11/lab-11-mlr-course-evals.html) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/lab-instructions/lab-11) -->
+<!-- ::: -->
+<!-- ::: {.starter} -->
+<!-- [Starter](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/starters/lab/lab-11-mlr-course-evals) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.lab} -->
+<!-- **Lab 12: Smoking while pregnant** -->
+<!-- Constructing confidence intervals, conducting hypothesis tests, and interpreting results in context of the data -->
+<!-- ::: {.instructions} -->
+<!-- [Instructions](https://rstudio-education.github.io/datascience-box/course-materials/lab-instructions/lab-12/lab-12-inference-smoking.html) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/lab-instructions/lab-12) -->
+<!-- ::: -->
+<!-- ::: {.starter} -->
+<!-- [Starter](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/starters/lab/lab-12-inference-smoking) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ## Homework assignments -->
+<!-- ::: {.homework} -->
+<!-- **HW 7: Bike rentals in DC** -->
+<!-- Exploratory data analysis and fitting and interpreting models -->
+<!-- ::: {.instructions} -->
+<!-- [Instructions](https://rstudio-education.github.io/datascience-box/course-materials/hw-instructions/hw-07/hw-07-bike-rentals-dc.html) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/hw-instructions/hw-07) -->
+<!-- ::: -->
+<!-- ::: {.starter} -->
+<!-- [Starter](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/starters/hw/hw-07-bike-rentals-dc) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.homework} -->
+<!-- **HW 8: Exploring the GSS** -->
+<!-- Fitting and interpreting models -->
+<!-- ::: {.instructions} -->
+<!-- [Instructions](https://rstudio-education.github.io/datascience-box/course-materials/hw-instructions/hw-08/hw-08-exploring-gss.html) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/hw-instructions/hw-08) -->
+<!-- ::: -->
+<!-- ::: {.starter} -->
+<!-- [Starter](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/starters/hw/hw-08-exploring-gss) -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.homework} -->
+<!-- **HW 9: Modelling the GSS** -->
+<!-- Model validation and inference -->
+<!-- ::: {.instructions} -->
+<!-- [Instructions](https://rstudio-education.github.io/datascience-box/course-materials/hw-instructions/hw-09/hw-09-modeling-gss.html) -->
+<!-- ::: -->
+<!-- ::: {.source} -->
+<!-- [Source](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/hw-instructions/hw-09) -->
+<!-- ::: -->
+<!-- ::: {.starter} -->
+<!-- [Starter](https://github.com/rstudio-education/datascience-box/tree/master/course-materials/starters/hw/hw-09-modeling-gss) -->
+<!-- ::: -->
+<!-- ::: -->
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="importing-recoding-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="things-you-can-do-after-this-course.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

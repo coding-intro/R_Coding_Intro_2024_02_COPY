@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Introduction to Data Science with R and Tidyverse</title>
+  <meta name="description" content="Data Science in a Box contains the materials required to teach (or learn from) the course described above, all of which are freely-available and open-source." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Introduction to Data Science with R and Tidyverse" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://datasciencebox.org/dsbox.png" />
+  <meta property="og:description" content="Data Science in a Box contains the materials required to teach (or learn from) the course described above, all of which are freely-available and open-source." />
+  <meta name="github-repo" content="https://github.com/coding-intro/R_Intro_2024_02" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Data Science with R and Tidyverse" />
+  
+  <meta name="twitter:description" content="Data Science in a Box contains the materials required to teach (or learn from) the course described above, all of which are freely-available and open-source." />
+  <meta name="twitter:image" content="https://datasciencebox.org/dsbox.png" />
+
+<meta name="author" content="Lukas Jürgensmeier, based on materials from Data Science in a Box by Mine Çetinkaya-Rundel" />
+
+
+<meta name="date" content="2024-02-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="hello-world.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/dsbox.css" type="text/css" />
+<link rel="stylesheet" href="css/fontawesome/css/all.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to Data Science with R and Tidyverse</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#course-objective"><i class="fa fa-check"></i><b>0.1</b> Course Objective</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i><b>0.2</b> Course Description</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#methods"><i class="fa fa-check"></i><b>0.3</b> Methods</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#conditions"><i class="fa fa-check"></i><b>0.4</b> Conditions</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#course-organization"><i class="fa fa-check"></i><b>0.5</b> Course Organization</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>0.6</b> Schedule</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#readings"><i class="fa fa-check"></i><b>0.7</b> Readings</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#trainers"><i class="fa fa-check"></i><b>0.8</b> Trainers</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Course content</b></span></li>
+<li class="chapter" data-level="1" data-path="hello-world.html"><a href="hello-world.html"><i class="fa fa-check"></i><b>1</b> Hello world</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="hello-world.html"><a href="hello-world.html#slides-application-exercises-and-references"><i class="fa fa-check"></i><b>1.1</b> Slides, application exercises, and references</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="visualizing-data.html"><a href="visualizing-data.html"><i class="fa fa-check"></i><b>2</b> Visualizing data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="visualizing-data.html"><a href="visualizing-data.html#slides-application-exercises-and-references-1"><i class="fa fa-check"></i><b>2.1</b> Slides, application exercises, and references</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="visualizing-data.html"><a href="visualizing-data.html#additional-material-not-covered-in-class"><i class="fa fa-check"></i><b>2.1.1</b> Additional material not covered in class</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="wrangling-tidying-data.html"><a href="wrangling-tidying-data.html"><i class="fa fa-check"></i><b>3</b> Wrangling and tidying data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="wrangling-tidying-data.html"><a href="wrangling-tidying-data.html#slides-application-exercises-and-references-2"><i class="fa fa-check"></i><b>3.1</b> Slides, application exercises, and references</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="wrangling-tidying-data.html"><a href="wrangling-tidying-data.html#additional-material-not-covered-in-class-1"><i class="fa fa-check"></i><b>3.1.1</b> Additional material not covered in class</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-recoding-data.html"><a href="importing-recoding-data.html"><i class="fa fa-check"></i><b>4</b> Importing and recoding data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="importing-recoding-data.html"><a href="importing-recoding-data.html#slides-application-exercises-and-references-3"><i class="fa fa-check"></i><b>4.1</b> Slides, application exercises, and references</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="importing-recoding-data.html"><a href="importing-recoding-data.html#additional-material-not-covered-in-class-2"><i class="fa fa-check"></i><b>4.1.1</b> Additional material not covered in class</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>5</b> Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="models.html"><a href="models.html#slides-application-exercises-and-references-4"><i class="fa fa-check"></i><b>5.1</b> Slides, application exercises, and references</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="models.html"><a href="models.html#additional-material-not-covered-in-class-3"><i class="fa fa-check"></i><b>5.1.1</b> Additional material not covered in class</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Next steps</b></span></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html"><i class="fa fa-check"></i>Things you can do after this course</a>
+<ul>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#continue-this-course"><i class="fa fa-check"></i>Continue this course</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#check-out-neuroscience-packages"><i class="fa fa-check"></i>Check out Neuroscience Packages</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#join-techacademy-e.v."><i class="fa fa-check"></i>Join TechAcademy e.V.</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#follow-the-r-community"><i class="fa fa-check"></i>Follow the R Community</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#install-r-and-rstudio-locally"><i class="fa fa-check"></i>Install R and RStudio locally</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#version-control-with-git"><i class="fa fa-check"></i>Version Control with Git</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#inspiration-and-tools-for-great-visualizations"><i class="fa fa-check"></i>Inspiration and Tools for Great Visualizations</a></li>
+<li class="chapter" data-level="" data-path="things-you-can-do-after-this-course.html"><a href="things-you-can-do-after-this-course.html#see-what-else-is-possible-in-r"><i class="fa fa-check"></i>See what else is possible in R</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Science with R and Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Introduction to Data Science with R and Tidyverse</h1>
+<p class="author"><em>Lukas Jürgensmeier, based on materials from Data Science in a Box by Mine Çetinkaya-Rundel</em></p>
+<p class="date"><em>2024-02-15</em></p>
+</div>
+<div id="welcome" class="section level1 unnumbered hasAnchor">
+<h1>Welcome<a href="index.html#welcome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Welcome to the course website for</p>
+<p><strong>Introduction to Data Science with R and Tidyverse</strong></p>
+<p>offered for GRADE Brain and other GRADE Centers at Goethe University in February 2024.
+This website serves as the central repository for all course materials.
+Here, you will find all slides, lecture materials, and links to your online development environment.</p>
+<div id="course-objective" class="section level2 hasAnchor" number="0.1">
+<h2><span class="header-section-number">0.1</span> Course Objective<a href="index.html#course-objective" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most academic fields require proficiency in at least one data-centered analysis tool.
+For many, the R programming language has become the tool of choice.
+However, the first steps in coding can be intimidating and discouraging—especially if you have never worked with a programming language before.
+This course aims at providing a results-oriented, applied, and hands-on introduction to the most important parts of a Data Science project in R.
+We will not only introduce the libraries and frameworks necessary for your analysis, but also focus on teaching you the implementation and application of those tools with small examples that you can work on yourself.</p>
+<p>Our goal is to show you the scope of possibilities within R and leave you with the impression that you can confidently implement your own empirical projects in R.
+We will focus on the Tidyverse ecosystem, a consistent and intuitive framework for building your data analysis from start to finish.
+After the successful completion of this course, you know how to apply the basic Tidyverse tools for common Data Science tasks in R—primarily data wrangling, data visualization, and results communication.</p>
+</div>
+<div id="course-description" class="section level2 hasAnchor" number="0.2">
+<h2><span class="header-section-number">0.2</span> Course Description<a href="index.html#course-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We aim this course at beginners who are either entirely new to R as a programming language and/or want to learn about the Tidyverse ecosystem.
+The course covers four primary areas of the typical data science process and introduces the respective <code>tidyverse</code> tools:</p>
+<ul>
+<li>Plotting with <code>ggplot2</code></li>
+<li>Data wrangling with <code>dplyr</code></li>
+<li>Communicating your results with R Markdown</li>
+<li>Regressions with <code>tidymodels</code></li>
+</ul>
+<p>We will not cover statistical or theoretical concepts in this course, as the focus will lie on applied coding.</p>
+</div>
+<div id="methods" class="section level2 hasAnchor" number="0.3">
+<h2><span class="header-section-number">0.3</span> Methods<a href="index.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will <em>let you eat cake first</em>.
+What does that mean?
+Many programming courses start with the absolute basics — variable types, syntax, loops, etc.
+Those are important but quite dull in the beginning.
+Instead of monotonously walking you through those, we follow a different teaching philosophy.</p>
+<p>Each topic will start with a very friendly and sometimes a bit complicated <em>cake</em>.
+And you will dive right into it by executing and adapting the code for that “data science cake.”</p>
+<p>For example, we will show you an advanced visualization right at the beginning of the course and focus on what is possible eventually.
+While this might appear intimidating at first (<em>“how should I ever be able to code that from scratch?”</em>), we will walk you through the steps and introduce the methods to get there during the course.</p>
+<p>The course will alternate between short introductions to a concept or method and small do-it-yourself coding exercises.
+In between the three sessions, you are encouraged to work on provided exercises that further deepen your understanding.</p>
+</div>
+<div id="conditions" class="section level2 hasAnchor" number="0.4">
+<h2><span class="header-section-number">0.4</span> Conditions<a href="index.html#conditions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This course is a beginner-friendly course.
+You do not need prior coding experience.
+But you are also more than welcome to participate if you are an experienced R user but want to learn more about the Tidyverse.</p>
+<p>You will need a <a href="https://posit.cloud/">Posit Cloud</a> (formerly RStudio Cloud) account.
+Posit Cloud is a very convenient online integrated Development Environment, where we provide you with all the necessary code to follow the course and work with small application exercises on your own.</p>
+<p>By avoiding to install RStudio locally during the course, we can start right away with the more critical course content.
+If you already have set up a local installation of RStudio, you are, of course, more than welcome to use that instead.
+In this case, download the source files linked in the respective application exercises.
+Note that you won’t need to set anything up if you use Posit Cloud.</p>
+<p>Since we do not want to waste precious time on the technical setup, we will use the Posit Cloud as a simple—and already set up—development environment.
+We will send out detailed instructions and an invitation link in advance.</p>
+</div>
+<div id="course-organization" class="section level2 hasAnchor" number="0.5">
+<h2><span class="header-section-number">0.5</span> Course Organization<a href="index.html#course-organization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will meet on February 16th and 23rd 2024 from 09:00 – 12:30 in Seminarhaus, room 5.106 on Campus Westend (<a href="https://www.wiwi.uni-frankfurt.de/fileadmin/user_upload/dateien_pruefungsamt/Pruefungsorganisation/Lageplan_Campus_Westend.pdf">see map</a>).
+Here is a rough timetable, depending on our progress we may change this up a little:</p>
+<p>DAY 1 (Feb. 16th)</p>
+<table>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Workshop Part 1</td>
+<td>09:00 – 10:30</td>
+</tr>
+<tr class="even">
+<td><em>Coffee Break</em></td>
+<td>10:30 – 11:00</td>
+</tr>
+<tr class="odd">
+<td>Workshop Part 2</td>
+<td>11:00 – 12:30</td>
+</tr>
+</tbody>
+</table>
+<p>DAY 2 (Feb. 23rd)</p>
+<table>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Workshop Part 3</td>
+<td>09:00 – 10:30</td>
+</tr>
+<tr class="even">
+<td><em>Coffee Break</em></td>
+<td>10:30 – 11:00</td>
+</tr>
+<tr class="odd">
+<td>Workshop Part 4</td>
+<td>11:00 – 12:30</td>
+</tr>
+</tbody>
+</table>
+<p>We want you to <em>make your hands dirty</em> — that means we want you to code!
+Just following along fancy slides won’t magically transfer the skill of coding to you.
+But you actively engaging with the course content in your development environment will more likely do just that.</p>
+<p>That’s why we need you to prepare accordingly:</p>
+<p>Please create a <a href="https://posit.cloud/">Posit Cloud</a> (formerly RStudio Cloud) account before the first class.
+We have sent you a link to access all exercises on Posit Cloud.
+Since we want you to start coding very early on in the first class, please ensure that you can access those course materials on Posit Cloud before our first meeting.</p>
+<p>If you have any questions, please reach out to one of us through the e-mail addresses on the bottom of this page.</p>
+</div>
+<div id="schedule" class="section level2 hasAnchor" number="0.6">
+<h2><span class="header-section-number">0.6</span> Schedule<a href="index.html#schedule" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This workshop alternates between lecture-style presentations and application exercises.
+In those hands-on exercises, you will actively try out the discussed tools in small groups and with suppport from the teachers.
+We aim to adhere to the following schedule.
+Depending on our progress, we may discuss some parts a bit earlier or later during the course.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Title</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Welcome</td>
+<td>Lecture</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>First data visualization: UN Votes</td>
+<td>Application Exercise</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>Meet the programming toolkit</td>
+<td>Lecture</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>The Bechdel Test + R Markdown</td>
+<td>Application Exercise</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Data and visualization</td>
+<td>Lecture</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Visualizing data with ggplot2</td>
+<td>Lecture</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Visualizing categorical data</td>
+<td>Lecture</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>StarWars + Dataviz</td>
+<td>Application Exercise</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Tidy data</td>
+<td>Lecture</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Grammar of data wrangling</td>
+<td>Lecture</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Working with a single data frame</td>
+<td>Lecture</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Hotels + Data wrangling</td>
+<td>Application Exercise</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Working with multiple data frames</td>
+<td>Lecture</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Data types</td>
+<td>Lecture</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Importing data</td>
+<td>Lecture</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Nobels + Sales + Data import</td>
+<td>Application Exercise</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Fitting and interpreting models</td>
+<td>Lecture</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="readings" class="section level2 hasAnchor" number="0.7">
+<h2><span class="header-section-number">0.7</span> Readings<a href="index.html#readings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The course is self-contained, and you will most likely get all the necessary information for the application exercises from the slides.
+If you want to read more about given topics, we provide links to chapters in open source Data Science/Tidyverse/R textbooks.
+You will find the links on the following pages right beside the link to each chapter’s slides.</p>
+<div class="reading">
+<p>We suggest two textbook references:</p>
+<ul>
+<li><strong>R4DS</strong>: Wickham, H., Grolemund, G. (2017), “R for Data Science: Import, Tidy, Transform, Visualize, and Model Data”, available at <a href="https://r4ds.had.co.nz/">r4ds.had.co.nz</a></li>
+<li><strong>IMS</strong>: Çetinkaya-Rundel, M., Hardin, J. (2022), “Introduction to Modern Statistics”, available at <a href="https://openintro-ims.netlify.app/">openintro-ims.netlify.app</a></li>
+</ul>
+</div>
+</div>
+<div id="trainers" class="section level2 hasAnchor" number="0.8">
+<h2><span class="header-section-number">0.8</span> Trainers<a href="index.html#trainers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Feel free to reach out to us by e-mail if you have any questions before, during, or after the course:</p>
+<ul>
+<li><p><strong>Matteo Fina</strong>, M.Sc., PhD Student at GSEFM in Economics, <a href="mailto:matteo.fina@its.uni-frankfurt.de">send me an e-mail</a></p></li>
+<li><p><strong>Jan Bischoff</strong>, Business and Economics Student, R/Python Teacher and Course Designer at <a href="#id_0">TechAcademy e.V.</a>, <a href="mailto:jan.bischoff@tech-academy.io">send me an e-mail</a></p></li>
+</ul>
+</div>
+<div id="license" class="section level2 unnumbered hasAnchor">
+<h2>License<a href="index.html#license" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />This online work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>.
+Visit <a href="https://github.com/rstudio-education/datascience-box/blob/master/LICENSE.md">here</a> for more information about the license.</p>
+</div>
+<div id="acknowledgements" class="section level2 unnumbered hasAnchor">
+<h2>Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The course is built upon material from <a href="https://datasciencebox.org/">datasciencebox.org</a> by Mine Çetinkaya-Rundel.</p>
+<p>We acknowledge generous financial support for teaching this course through a DigiTeLL grant (project “Coding Intro”).</p>
+<p>Thanks to the #rstats education community who have made numerous suggestions for this resource, Lee Suddaby and Zeno Kujawa, for converting the homework assignments to learnr tutorials and <a href="http://muge.fr/">Müge Çetinkaya</a> for the hex logo!</p>
+<p>This website is built with <a href="https://bookdown.org/">bookdown</a>, the lovely icons by <a href="http://icons8.com/">icons8</a>, and none of this would be possible without the <a href="https://tidyverse.org/">tidyverse</a>.</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="hello-world.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
