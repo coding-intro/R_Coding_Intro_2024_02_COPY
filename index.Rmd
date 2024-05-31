@@ -82,10 +82,10 @@ We will send out detailed instructions and an invitation link in advance.
 
 ## Course Organization
 
-We will meet on February 16th and 23rd 2024 from 09:00 -- 12:30 in Seminarhaus, room 5.106 on Campus Westend ([see map](https://www.wiwi.uni-frankfurt.de/fileadmin/user_upload/dateien_pruefungsamt/Pruefungsorganisation/Lageplan_Campus_Westend.pdf)).
+We will meet on June 20th and 27th 2024 from 09:00 -- 12:30 in Seminarhaus, room 5.106 on Campus Westend ([see map](https://www.wiwi.uni-frankfurt.de/fileadmin/user_upload/dateien_pruefungsamt/Pruefungsorganisation/Lageplan_Campus_Westend.pdf)).
 Here is a rough timetable, depending on our progress we may change this up a little:
 
-DAY 1 (Feb. 16th)
+DAY 1 (June 20th)
 
 | Part            | Time           |
 |-----------------|----------------|
@@ -93,7 +93,7 @@ DAY 1 (Feb. 16th)
 | *Coffee Break*  | 10:30 -- 11:00 |
 | Workshop Part 2 | 11:00 -- 12:30 |
 
-DAY 2 (Feb. 23rd)
+DAY 2 (June 27th)
 
 | Part            | Time           |
 |-----------------|----------------|
@@ -160,6 +160,8 @@ Feel free to reach out to us by e-mail if you have any questions before, during,
 -   **Matteo Fina**, M.Sc., PhD Student at GSEFM in Economics, [send me an e-mail](mailto:matteo.fina@its.uni-frankfurt.de)
 
 -   **Jan Bischoff**, Business and Economics Student, R/Python Teacher and Course Designer at [TechAcademy e.V.](#0), [send me an e-mail](mailto:jan.bischoff@tech-academy.io)
+
+-   **Lars Schilling**, Psychology Student, R Teacher and Board Member at [TechAcademy e.V.](#0), [send me an e-mail](mailto:lars.schilling@tech-academy.io)
 
 ## License {.unnumbered}
 
