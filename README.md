@@ -56,3 +56,4 @@ They use data science methods and R daily in their academic and non-academic job
 
 -   [Matteo Fina](https://www.marketing.uni-frankfurt.de/professoren/otter/wissenschaftliche-mitarbeiter/matteo-fina.html), M.Sc., PhD Student at GSEFM in Economics
 -   Jan Bischoff, Business and Economics Student, R/Python Teacher and Course Designer at TechAcademy e.V.
+-   Lars Schilling, Psychology Student, R Teacher and Board Member at TechAcademy e.V.
